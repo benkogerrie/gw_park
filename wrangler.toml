@@ -1,6 +1,3 @@
 name = "gw-park"
 compatibility_date = "2025-11-20"
 
-[site]
-bucket = "./dist"
-
