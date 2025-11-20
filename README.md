@@ -60,11 +60,11 @@ Deze site is geconfigureerd voor deployment op Cloudflare Pages.
    - **Build command:** `npm run build`
    - **Build output directory:** `dist`
    - **Root directory:** `/` (laat leeg)
-   - **Deploy command:** `npm run deploy` (dit commando deployt de dist folder naar Cloudflare Pages)
+   - **Deploy command:** (LAAT LEEG - Cloudflare Pages deployt automatisch de dist folder!)
 9. Klik op **Save and Deploy**
 10. Wacht tot de build klaar is - je site is dan live!
 
-**BELANGRIJK:** Het deploy command gebruikt `wrangler pages deploy` om de `dist` folder te deployen naar Cloudflare Pages.
+**BELANGRIJK:** Voor Cloudflare Pages met Git integration hoef je GEEN deploy command in te vullen. Pages detecteert automatisch de `dist` folder en deployt die na een succesvolle build. Als het veld verplicht is, gebruik dan een lege string of `echo "Deployment handled by Cloudflare Pages"`.
 
 Je site krijgt automatisch een URL zoals: `https://gw-park.pages.dev`
 

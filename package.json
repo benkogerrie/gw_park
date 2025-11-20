@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "deploy": "npx wrangler pages deploy dist --project-name=gw-park"
+    "preview": "vite preview"
   },
   "dependencies": {
 
