@@ -793,25 +793,26 @@
                     </div>
                 </div>
                 <div class="contact-form-container">
-                    <form class="contact-form" onsubmit="event.preventDefault(); alert('Vielen Dank für Ihre Nachricht! (Demo)');">
+                    <form class="contact-form" id="contactForm">
+                        <div id="formMessage" style="display: none; padding: 15px; margin-bottom: 20px; border-radius: 4px; font-weight: 600;"></div>
                         <div class="form-group">
                             <label for="municipality">Gemeinde / Institution</label>
-                            <input type="text" id="municipality" required placeholder="Name der Stadt oder Eigentümer">
+                            <input type="text" id="municipality" name="municipality" required placeholder="Name der Stadt oder Eigentümer">
                         </div>
                         <div class="form-group">
                             <label for="contact">Ansprechpartner</label>
-                            <input type="text" id="contact" required placeholder="Ihr Name">
+                            <input type="text" id="contact" name="contact" required placeholder="Ihr Name">
                         </div>
                         <div class="form-group">
                             <label for="email">E-Mail Adresse</label>
-                            <input type="email" id="email" required placeholder="name@organisation.de">
+                            <input type="email" id="email" name="email" required placeholder="name@organisation.de">
                         </div>
                         <div class="form-group full-width">
                             <label for="message">Informationen zum Standort</label>
-                            <textarea id="message" rows="4" placeholder="Lage, Größe, aktuelle Nutzung..."></textarea>
+                            <textarea id="message" name="message" rows="4" placeholder="Lage, Größe, aktuelle Nutzung..."></textarea>
                         </div>
                         <div class="form-group full-width">
-                            <button type="submit" class="btn">Anfrage senden</button>
+                            <button type="submit" class="btn" id="submitBtn">Anfrage senden</button>
                         </div>
                     </form>
                 </div>
@@ -918,6 +919,75 @@
         } else {
             loadContent();
         }
+
+        // Contact form handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            const formMessage = document.getElementById('formMessage');
+            const submitBtn = document.getElementById('submitBtn');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const formData = {
+                        municipality: document.getElementById('municipality').value,
+                        contact: document.getElementById('contact').value,
+                        email: document.getElementById('email').value,
+                        message: document.getElementById('message').value
+                    };
+
+                    // Disable submit button
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Wird gesendet...';
+
+                    try {
+                        // Using Web3Forms API (free, no signup required)
+                        const response = await fetch('https://api.web3forms.com/submit', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                access_key: 'YOUR_ACCESS_KEY_HERE', // Replace with your Web3Forms access key
+                                subject: 'Neue Anfrage von GW-Park Website',
+                                from_name: formData.contact,
+                                from_email: formData.email,
+                                municipality: formData.municipality,
+                                contact: formData.contact,
+                                email: formData.email,
+                                message: formData.message,
+                                to_email: 'info@gw-park.de'
+                            })
+                        });
+
+                        const result = await response.json();
+
+                        if (result.success) {
+                            formMessage.style.display = 'block';
+                            formMessage.style.backgroundColor = '#dfffd0';
+                            formMessage.style.color = '#1e2226';
+                            formMessage.style.border = '2px solid #96d663';
+                            formMessage.textContent = 'Vielen Dank für Ihre Nachricht! Wir melden uns schnellstmöglich bei Ihnen.';
+                            contactForm.reset();
+                        } else {
+                            throw new Error('Form submission failed');
+                        }
+                    } catch (error) {
+                        formMessage.style.display = 'block';
+                        formMessage.style.backgroundColor = '#ffe0e0';
+                        formMessage.style.color = '#1e2226';
+                        formMessage.style.border = '2px solid #ff6b6b';
+                        formMessage.textContent = 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt per E-Mail.';
+                        console.error('Form error:', error);
+                    } finally {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Anfrage senden';
+                    }
+                });
+            }
+        });
     </script>
 </body>
 </html>

@@ -11,6 +11,7 @@ Deze website presenteert GW-Park's concept voor moderne gewerbeparks in duurzame
 - **Vite** - Build tool en development server
 - **TypeScript** - Type-safe JavaScript
 - **HTML/CSS** - Moderne, responsive website
+- **Web3Forms** - Contact formulier handling
 
 ## Lokaal draaien
 
@@ -42,6 +43,18 @@ De gebouwde bestanden staan in de `dist` folder.
 npm run preview
 ```
 
+## Contact Formulier Setup
+
+Het contactformulier gebruikt Web3Forms voor het verzenden van emails. Om het werkend te maken:
+
+1. Ga naar [Web3Forms](https://web3forms.com/)
+2. Voer je email adres in (bijv. `info@gw-park.de`)
+3. Krijg je gratis access key
+4. Vervang `YOUR_ACCESS_KEY_HERE` in `index.html` met je access key
+5. Commit en push de wijziging
+
+**Gratis:** Tot 250 submissions per maand, geen creditcard nodig.
+
 ## Deployment
 
 Deze site is geconfigureerd voor deployment op Cloudflare Pages.
@@ -56,17 +69,20 @@ Deze site is geconfigureerd voor deployment op Cloudflare Pages.
 6. Autoriseer Cloudflare om toegang te krijgen tot je GitHub account
 7. Selecteer de repository: `benkogerrie/gw_park`
 8. Configureer build settings:
-   - **Framework preset:** Vite (of "None" als Vite niet beschikbaar is)
+   - **Framework preset:** None
    - **Build command:** `npm run build`
    - **Build output directory:** `dist`
    - **Root directory:** `/` (laat leeg)
-   - **Deploy command:** (LAAT LEEG - Cloudflare Pages deployt automatisch de dist folder!)
+   - **Deploy command:** (leeg laten)
 9. Klik op **Save and Deploy**
-10. Wacht tot de build klaar is - je site is dan live!
-
-**BELANGRIJK:** Voor Cloudflare Pages met Git integration hoef je GEEN deploy command in te vullen. Pages detecteert automatisch de `dist` folder en deployt die na een succesvolle build. Als het veld verplicht is, gebruik dan een lege string of `echo "Deployment handled by Cloudflare Pages"`.
 
 Je site krijgt automatisch een URL zoals: `https://gw-park.pages.dev`
+
+## Content Management (Decap CMS)
+
+Bezoek `https://gw-park.de/admin` om teksten te bewerken via Decap CMS.
+
+**Let op:** Voor GitHub authenticatie moet je een OAuth App aanmaken in GitHub Settings → Developer settings → OAuth Apps.
 
 ## Project structuur
 
@@ -74,6 +90,8 @@ Je site krijgt automatisch een URL zoals: `https://gw-park.pages.dev`
 - `index.tsx` - Entry point voor development
 - `vite.config.ts` - Vite configuratie
 - `tsconfig.json` - TypeScript configuratie
+- `content/site/` - JSON bestanden voor CMS content
+- `public/admin/` - Decap CMS configuratie
 - `pictures/` - Afbeeldingen voor de website
 
 ## Licentie
