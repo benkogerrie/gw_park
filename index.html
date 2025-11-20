@@ -976,32 +976,6 @@
                         console.log('Form response:', result);
 
                         if (result.success) {
-                            // Send confirmation email using a second Web3Forms call
-                            // Note: This uses the same access key but sends to the form submitter
-                            try {
-                                // Create a reverse email: send FROM the submitter TO themselves
-                                // This is a workaround since Web3Forms free doesn't support autoresponder
-                                const confirmResponse = await fetch('https://api.web3forms.com/submit', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                        'Accept': 'application/json'
-                                    },
-                                    body: JSON.stringify({
-                                        access_key: '4c1b4e57-e8c1-4753-8cbc-a546df572500',
-                                        subject: 'Ihre Anfrage bei GW-Park - Vielen Dank!',
-                                        from_name: 'GW-Park',
-                                        from_email: formData.email,
-                                        name: formData.contact,
-                                        message: `Sehr geehrte/r ${formData.contact},\n\nvielen Dank für Ihre Anfrage bei GW-Park!\n\nWir haben Ihre Nachricht erhalten und werden uns schnellstmöglich bei Ihnen melden.\n\nMit freundlichen Grüßen\nDas GW-Park Team`
-                                    })
-                                });
-                                const confirmResult = await confirmResponse.json();
-                                console.log('Confirmation email sent:', confirmResult);
-                            } catch (emailError) {
-                                console.log('Confirmation email failed (non-critical):', emailError);
-                            }
-
                             formMessage.style.display = 'block';
                             formMessage.style.backgroundColor = '#dfffd0';
                             formMessage.style.color = '#1e2226';
