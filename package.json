@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "echo 'Deployment handled automatically by Cloudflare Pages'"
+    "deploy": "echo 'Deployment handled automatically by Cloudflare Pages'",
+    "version": "echo 'Version handled automatically by Cloudflare Pages'"
   },
   "dependencies": {
 
