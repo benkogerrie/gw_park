@@ -807,6 +807,10 @@
                             <label for="email">E-Mail Adresse</label>
                             <input type="email" id="email" name="email" required placeholder="name@organisation.de">
                         </div>
+                        <div class="form-group">
+                            <label for="phone">Telefonnummer (optional)</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+49 123 456789">
+                        </div>
                         <div class="form-group full-width">
                             <label for="message">Informationen zum Standort</label>
                             <textarea id="message" name="message" rows="4" placeholder="Lage, Größe, aktuelle Nutzung..."></textarea>
@@ -935,6 +939,7 @@
                         municipality: document.getElementById('municipality').value,
                         contact: document.getElementById('contact').value,
                         email: document.getElementById('email').value,
+                        phone: document.getElementById('phone').value,
                         message: document.getElementById('message').value
                     };
 
@@ -956,7 +961,11 @@
                                 from_name: formData.contact,
                                 from_email: formData.email,
                                 name: formData.contact,
-                                message: `Gemeinde/Institution: ${formData.municipality}\nAnsprechpartner: ${formData.contact}\nE-Mail: ${formData.email}\n\nNachricht:\n${formData.message}`
+                                phone: formData.phone || 'Nicht angegeben',
+                                message: `Gemeinde/Institution: ${formData.municipality}\nAnsprechpartner: ${formData.contact}\nE-Mail: ${formData.email}\nTelefon: ${formData.phone || 'Nicht angegeben'}\n\nNachricht:\n${formData.message}`,
+                                auto_respond: true,
+                                auto_respond_subject: 'Ihre Anfrage bei GW-Park - Vielen Dank!',
+                                auto_respond_message: `Sehr geehrte/r ${formData.contact},\n\nvielen Dank für Ihre Anfrage bei GW-Park!\n\nWir haben Ihre Nachricht erhalten und werden uns schnellstmöglich bei Ihnen melden.\n\nMit freundlichen Grüßen\nDas GW-Park Team`
                             })
                         });
 
