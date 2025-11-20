@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GW-Park | Moderne Gewerbeparks für den Mittelstand</title>
+    <meta name="description" content="Wir entwickeln und managen moderne Gewerbeparks. Der Partner für Kommunen für nachhaltige Wirtschaftsförderung.">
+
+    <!-- Google Fonts: Inter for a clean, architectural look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            /* Brand Colors */
+            --color-accent: #aef078; /* Lime Green - distinct technical/safety feel */
+            --color-accent-dim: #dfffd0;
+            --color-accent-hover: #96d663;
+            --color-dark: #1e2226; /* Dark Charcoal - industrial dark */
+            --color-dark-secondary: #2e3238;
+            --color-light: #ffffff;
+            --color-grey-bg: #f0f2f5; /* Cool grey */
+            --color-text: #333333;
+            --color-text-light: #666666;
+            
+            /* Layout */
+            --container-width: 1200px;
+            --header-height: 80px;
+            
+            /* Transitions */
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* FEATURE: Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-text);
+            line-height: 1.6;
+            background-color: var(--color-light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--color-dark);
+            line-height: 1.2;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* --- UTILITIES --- */
+        .container {
+            width: 90%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            background-color: var(--color-accent);
+            color: var(--color-dark);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 2px solid var(--color-accent);
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--color-accent);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+        }
+        
+        .btn-outline:hover {
+            background-color: #fff;
+            color: var(--color-dark);
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .bg-grey {
+            background-color: var(--color-grey-bg);
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .bg-pattern {
+            background-color: var(--color-light);
+            background-image: 
+                linear-gradient(rgba(30, 34, 38, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(30, 34, 38, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .text-center { text-align: center; }
+        .mb-2 { margin-bottom: 2rem; }
+
+        /* --- FEATURE: Sticky Navigation --- */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.98);
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            backdrop-filter: blur(5px);
+            border-bottom: 4px solid var(--color-dark);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--color-dark);
+            letter-spacing: -0.05em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--color-accent-hover);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--color-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #5a8a35;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--color-accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .header-cta {
+            display: block;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--color-dark);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            height: 80vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            color: #fff;
+            overflow: hidden;
+        }
+        
+        /* HERO BACKGROUND IMAGE - UPDATED TO USER CONCEPT IMAGE */
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            /* IMPORTANT: Save your image as 'concept.jpg' in the same folder */
+            background-image: url('./concept.jpg'); 
+            background-size: cover;
+            background-position: center bottom; /* Adjusted to show buildings */
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to right, rgba(30, 34, 38, 0.85), rgba(30, 34, 38, 0.4));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            z-index: 2;
+            padding-left: 40px;
+            border-left: 5px solid var(--color-accent);
+        }
+
+        .hero-subtitle {
+            display: inline-block;
+            color: var(--color-accent);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: #fff;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            line-height: 1.05;
+        }
+
+        .hero p {
+            font-size: 1.35rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 650px;
+            font-weight: 300;
+        }
+
+        /* --- PRODUCT SHOWCASE (Interior/Exterior) --- */
+        /* Showcase Grid matching Concept and Interior */
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .showcase-item {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            group: 1;
+        }
+
+        .showcase-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .showcase-item:hover .showcase-img {
+            transform: scale(1.05);
+        }
+
+        .showcase-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: #fff;
+            padding: 40px;
+        }
+
+        .showcase-caption h3 {
+            color: var(--color-accent);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        /* --- TARGET GROUP SECTION (Tenants) --- */
+        .tenant-section {
+            padding: 100px 0;
+            background-color: #fff;
+        }
+
+        .tenant-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px auto;
+        }
+
+        .tenant-grid {
+            display: grid;
+            /* Adjusted for 4 items: allows 4 columns on very large screens or 2x2 on laptops */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .tenant-card {
+            background-color: var(--color-grey-bg);
+            border-bottom: 4px solid var(--color-accent);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tenant-img-wrapper {
+            height: 250px; /* Slightly reduced height to accommodate more rows if needed */
+            overflow: hidden;
+        }
+
+        .tenant-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .tenant-content {
+            padding: 30px;
+            flex-grow: 1;
+        }
+
+        .tenant-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        
+        .tenant-tag {
+            display: inline-block;
+            background: var(--color-dark);
+            color: #fff;
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 15px;
+        }
+
+        /* --- ICON GRID --- */
+        .icon-grid-section {
+            background-color: var(--color-dark);
+            color: #fff;
+            padding: 80px 0;
+        }
+
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .icon-item svg {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 20px;
+            color: var(--color-accent);
+            display: inline-block;
+        }
+
+        .icon-item h4 {
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        
+        .icon-item p {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* --- TIMELINE & CONTACT (Retained) --- */
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 60px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            left: 60px;
+            right: 60px;
+            height: 2px;
+            border-top: 2px dashed #bbb;
+            z-index: 0;
+            display: block;
+        }
+
+        .step {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            text-align: center;
+            min-width: 160px;
+            background-color: var(--color-grey-bg);
+            padding: 0 10px;
+        }
+
+        .step-marker {
+            width: 50px;
+            height: 50px;
+            background-color: #fff;
+            border: 2px solid var(--color-dark);
+            color: var(--color-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin: 0 auto 25px;
+            transition: all 0.3s;
+        }
+        
+        .step:hover .step-marker {
+            background-color: var(--color-accent);
+            border-color: var(--color-accent);
+        }
+
+        .contact-wrapper {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 0;
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+        
+        .contact-info {
+            background-color: var(--color-dark);
+            color: #fff;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .contact-form-container {
+            padding: 60px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            margin-bottom: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--color-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        input, textarea {
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 0;
+            color: var(--color-text);
+            font-family: inherit;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--color-dark);
+            background-color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            color: #666;
+            padding: 60px 0;
+            text-align: center;
+            font-size: 0.85rem;
+            border-top: 1px solid #333;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 2.2rem; }
+            
+            .header-cta { display: none; }
+
+            .nav-links {
+                position: absolute;
+                top: var(--header-height);
+                left: 0;
+                right: 0;
+                background-color: #fff;
+                flex-direction: column;
+                padding: 30px;
+                gap: 20px;
+                border-bottom: 4px solid var(--color-dark);
+                display: none;
+                text-align: center;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .hero { height: auto; min-height: 500px; }
+            .hero-content { padding-left: 20px; padding-right: 20px; }
+            
+            .showcase-grid { grid-template-columns: 1fr; }
+            .showcase-item { height: 350px; }
+            
+            .tenant-grid { grid-template-columns: 1fr; }
+
+            .contact-wrapper { grid-template-columns: 1fr; }
+            .contact-info { padding: 40px; }
+            .contact-form-container { padding: 40px; }
+
+            .timeline::before { display: none; }
+            .timeline { flex-direction: column; gap: 30px; }
+            .step { display: flex; align-items: center; text-align: left; padding: 0; background: transparent; }
+            .step-marker { margin: 0 20px 0 0; min-width: 50px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Header -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">GW-PARK<span>.</span></a>
+            
+            <nav class="nav-links" id="navLinks">
+                <a href="#konzept" onclick="closeMenu()">Konzept</a>
+                <a href="#einblick" onclick="closeMenu()">Einblicke</a>
+                <a href="#nutzer" onclick="closeMenu()">Mieter</a>
+                <a href="#prozess" onclick="closeMenu()">Ablauf</a>
+                <a href="#kontakt" onclick="closeMenu()">Kontakt</a>
+            </nav>
+
+            <div class="header-cta">
+                <a href="#kontakt" class="btn">Standort anbieten</a>
+            </div>
+
+            <div class="mobile-toggle" onclick="toggleMenu()">☰</div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Concept Image -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-subtitle">Gewerbeparks 2.0 // Made for Mittelstand</span>
+                <h1>Raum für Macher.<br>Zukunft für Kommunen.</h1>
+                <p>Moderne Produktions-, Lager- und Serviceflächen in nachhaltiger Holzbauweise. Wir entwickeln und managen Standorte, die das lokale Gewerbe stärken.</p>
+                <a href="#kontakt" class="btn" style="background-color: transparent; color: #fff; border-color: #fff;">Gespräch vereinbaren</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intro / Concept -->
+    <section id="konzept" class="section-padding bg-grey">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <h2>Industrie im Wandel</h2>
+                <p style="font-size: 1.2rem;">Städte und Gemeinden stehen vor einem Dilemma: Kleine und mittlere Produktionsbetriebe (KMU) werden aus Innenstädten verdrängt, während alte Industriebrachen ungenutzt bleiben. Wir bieten die Lösung.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISUAL SHOWCASE: Concept Image and Interior -->
+    <section id="einblick" class="showcase-grid">
+        <!-- Exterior Detail - Using the Concept Image -->
+        <div class="showcase-item">
+            <!-- IMPORTANT: Save your image as 'concept.jpg' -->
+            <img src="./concept.jpg" alt="Außenansicht GW-Park Einheit - Holzbauweise" class="showcase-img">
+            <div class="showcase-caption">
+                <h3>Modulare Architektur</h3>
+                <p>Hochwertige Holzfassaden, ebenerdige Rolltore und flexible Flächenaufteilung ab 150m². Keine grauen Betonwüsten.</p>
+            </div>
+        </div>
+        <!-- Interior Detail -->
+        <div class="showcase-item">
+            <!-- Fallback URL matches Interior Mezzanine style -->
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000&auto=format&fit=crop" alt="Innenansicht GW-Park Einheit" class="showcase-img">
+            <div class="showcase-caption">
+                <h3>Moderne Arbeitswelten</h3>
+                <p>Helle, hohe Räume mit Mezzanin-Ebenen für Büros. Angenehmes Raumklima und High-Speed Internet für digitale Prozesse.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- KEY FEATURES ICONS -->
+    <section class="icon-grid-section">
+        <div class="container">
+            <div class="icon-grid">
+                <div class="icon-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    <h4>Flexibel & Skalierbar</h4>
+                    <p>Flächen wachsen mit dem Unternehmen.</p>
+                </div>
+                <div class="icon-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4 8 4v14"/><path d="M13 10l4 4"/><path d="M17 10l-4 4"/></svg>
+                    <h4>Nachhaltig Gebaut</h4>
+                    <p>Holz-Hybridbauweise & PV-Anlagen.</p>
+                </div>
+                <div class="icon-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    <h4>Aktives Management</h4>
+                    <p>Gepflegte Areale & Hausmeisterservice.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TARGET AUDIENCE (Tenants) -->
+    <section id="nutzer" class="tenant-section">
+        <div class="container">
+            <div class="tenant-intro">
+                <h2>Wer sind die Mieter?</h2>
+                <p>Wir schaffen Synergien zwischen traditionellem Handwerk, moderner Produktion und Technologie.</p>
+            </div>
+
+            <div class="tenant-grid">
+                <!-- Tenant Type 1 -->
+                <div class="tenant-card">
+                    <div class="tenant-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1000&auto=format&fit=crop" alt="KMU Unternehmer im Lager">
+                    </div>
+                    <div class="tenant-content">
+                        <span class="tenant-tag">Logistik & Handwerk</span>
+                        <h3>Lager & Logistik</h3>
+                        <p>Perfekt für <strong>Online-Händler</strong>, <strong>Kurierdienste</strong> oder <strong>Importeure</strong>. Die Hallen bieten robuste Böden, ebenerdige Tore und perfekte Andienung für Sprinter.</p>
+                    </div>
+                </div>
+
+                <!-- Tenant Type 2 -->
+                <div class="tenant-card">
+                    <div class="tenant-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1581093458891-77315338b288?q=80&w=1000&auto=format&fit=crop" alt="Techniker im Reinraum">
+                    </div>
+                    <div class="tenant-content">
+                        <span class="tenant-tag">Hightech & Forschung</span>
+                        <h3>Innovation & Labor</h3>
+                        <p>Für <strong>3D-Druck</strong>, <strong>Labore</strong> oder <strong>Medizintechnik</strong>. Die saubere, staubarme Bausubstanz eignet sich ideal für Unternehmen mit hohen technischen Ansprüchen.</p>
+                    </div>
+                </div>
+
+                <!-- Tenant Type 3 -->
+                <div class="tenant-card">
+                    <div class="tenant-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1000&auto=format&fit=crop" alt="Montage und Fertigung">
+                    </div>
+                    <div class="tenant-content">
+                        <span class="tenant-tag">Manufaktur & Technik</span>
+                        <h3>Produktion & Montage</h3>
+                        <p>Optimal für <strong>Feinmechanik</strong>, <strong>Elektrotechnik</strong> oder <strong>kleine Fertigungsstraßen</strong>. Repräsentative Flächen kombiniert mit funktionaler Werkstatt.</p>
+                    </div>
+                </div>
+
+                <!-- Tenant Type 4 (NEW) -->
+                <div class="tenant-card">
+                    <div class="tenant-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=1000&auto=format&fit=crop" alt="Messebau und Werkstatt">
+                    </div>
+                    <div class="tenant-content">
+                        <span class="tenant-tag">Handwerk & Ausbau</span>
+                        <h3>Handwerk & Spezialbau</h3>
+                        <p>Ideal für <strong>Messebauer</strong>, <strong>Werbetechniker</strong> oder <strong>Spezialwerkstätten</strong>. Große Raumhöhen und Starkstromanschlüsse bieten Platz für Maschinen.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Timeline -->
+    <section id="prozess" class="section-padding bg-grey">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 60px;">Kooperation mit Kommunen</h2>
+            <div class="timeline">
+                <div class="step">
+                    <div class="step-marker">1</div>
+                    <div>
+                        <h4>Standortsuche</h4>
+                        <p>Identifikation von Brachflächen.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-marker">2</div>
+                    <div>
+                        <h4>Planung</h4>
+                        <p>Baurecht & Konzeptstudie.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-marker">3</div>
+                    <div>
+                        <h4>Bauphase</h4>
+                        <p>Schnelle Errichtung in Modulbauweise.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-marker">4</div>
+                    <div>
+                        <h4>Betrieb</h4>
+                        <p>Langfristige Vermietung & Pflege.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="kontakt" class="section-padding bg-pattern">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div>
+                        <h2>Grundstück anbieten</h2>
+                        <p style="opacity: 0.8; margin-top: 20px;">Sie vertreten eine Kommune oder besitzen eine gewerbliche Liegenschaft? Lassen Sie uns das Potenzial analysieren.</p>
+                    </div>
+                    <div>
+                        <p><strong>GW-Park GmbH</strong><br>Musterstraße 1<br>10115 Berlin</p>
+                        <p style="margin-top: 20px;"><a href="mailto:info@gw-park.de" style="text-decoration: underline;">info@gw-park.de</a></p>
+                    </div>
+                </div>
+                <div class="contact-form-container">
+                    <form class="contact-form" onsubmit="event.preventDefault(); alert('Vielen Dank für Ihre Nachricht! (Demo)');">
+                        <div class="form-group">
+                            <label for="municipality">Gemeinde / Institution</label>
+                            <input type="text" id="municipality" required placeholder="Name der Stadt oder Eigentümer">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact">Ansprechpartner</label>
+                            <input type="text" id="contact" required placeholder="Ihr Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-Mail Adresse</label>
+                            <input type="email" id="email" required placeholder="name@organisation.de">
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="message">Informationen zum Standort</label>
+                            <textarea id="message" rows="4" placeholder="Lage, Größe, aktuelle Nutzung..."></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <button type="submit" class="btn">Anfrage senden</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 GW-Park. Alle Rechte vorbehalten. | <a href="#">Impressum</a> | <a href="#">Datenschutz</a></p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const nav = document.getElementById('navLinks');
+            if (nav.classList.contains('active')) {
+                nav.classList.remove('active');
+            }
+        }
+    </script>
+    
+    <!-- Module kept for compatibility -->
+    <script type="module" src="./index.tsx"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
