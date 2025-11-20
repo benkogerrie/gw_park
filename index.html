@@ -962,7 +962,14 @@
                             })
                         });
 
+                        if (!response.ok) {
+                            const errorText = await response.text();
+                            console.error('Response error:', response.status, errorText);
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+
                         const result = await response.json();
+                        console.log('Form response:', result);
 
                         if (result.success) {
                             formMessage.style.display = 'block';
@@ -972,7 +979,10 @@
                             formMessage.textContent = 'Vielen Dank für Ihre Nachricht! Wir melden uns schnellstmöglich bei Ihnen.';
                             contactForm.reset();
                         } else {
-                            throw new Error('Form submission failed');
+                            // Show more specific error message
+                            const errorMsg = result.message || 'Form submission failed';
+                            console.error('Form submission failed:', errorMsg);
+                            throw new Error(errorMsg);
                         }
                     } catch (error) {
                         formMessage.style.display = 'block';
