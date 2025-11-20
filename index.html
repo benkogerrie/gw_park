@@ -845,7 +845,7 @@
             try {
                 // Load hero content
                 const heroResponse = await fetch('/content/site/hero.json');
-                if (heroResponse.ok) {
+                if (heroResponse.ok && heroResponse.headers.get('content-type')?.includes('application/json')) {
                     const heroData = await heroResponse.json();
                     const heroSubtitle = document.querySelector('.hero-subtitle');
                     const heroTitle = document.querySelector('.hero h1');
@@ -860,7 +860,7 @@
 
                 // Load konzept content
                 const konzeptResponse = await fetch('/content/site/konzept.json');
-                if (konzeptResponse.ok) {
+                if (konzeptResponse.ok && konzeptResponse.headers.get('content-type')?.includes('application/json')) {
                     const konzeptData = await konzeptResponse.json();
                     const konzeptTitle = document.querySelector('#konzept h2');
                     const konzeptText = document.querySelector('#konzept p');
@@ -871,7 +871,7 @@
 
                 // Load tenants content
                 const tenantsResponse = await fetch('/content/site/tenants.json');
-                if (tenantsResponse.ok) {
+                if (tenantsResponse.ok && tenantsResponse.headers.get('content-type')?.includes('application/json')) {
                     const tenantsData = await tenantsResponse.json();
                     const tenantCards = document.querySelectorAll('.tenant-card');
                     
@@ -896,7 +896,7 @@
 
                 // Load contact content
                 const contactResponse = await fetch('/content/site/contact.json');
-                if (contactResponse.ok) {
+                if (contactResponse.ok && contactResponse.headers.get('content-type')?.includes('application/json')) {
                     const contactData = await contactResponse.json();
                     const contactTitle = document.querySelector('#kontakt h2');
                     const contactDescription = document.querySelector('.contact-info p');
@@ -909,6 +909,7 @@
                     }
                 }
             } catch (error) {
+                // Silently fail - use default content from HTML
                 console.log('Content loading failed, using default content:', error);
             }
         }
