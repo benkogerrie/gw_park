@@ -951,15 +951,12 @@
                                 'Accept': 'application/json'
                             },
                             body: JSON.stringify({
-                                access_key: 'c1b4e57-e8c1-4753-8cbc-a546df572500', // Replace with your Web3Forms access key
+                                access_key: 'c1b4e57-e8c1-4753-8cbc-a546df572500',
                                 subject: 'Neue Anfrage von GW-Park Website',
                                 from_name: formData.contact,
                                 from_email: formData.email,
-                                municipality: formData.municipality,
-                                contact: formData.contact,
-                                email: formData.email,
-                                message: formData.message,
-                                to_email: 'robbie@greatbayvc.com'
+                                name: formData.contact,
+                                message: `Gemeinde/Institution: ${formData.municipality}\nAnsprechpartner: ${formData.contact}\nE-Mail: ${formData.email}\n\nNachricht:\n${formData.message}`
                             })
                         });
 
