@@ -965,7 +965,8 @@
                                 message: `Gemeinde/Institution: ${formData.municipality}\nAnsprechpartner: ${formData.contact}\nE-Mail: ${formData.email}\nTelefon: ${formData.phone || 'Nicht angegeben'}\n\nNachricht:\n${formData.message}`,
                                 auto_respond: true,
                                 auto_respond_subject: 'Ihre Anfrage bei GW-Park - Vielen Dank!',
-                                auto_respond_message: `Sehr geehrte/r ${formData.contact},\n\nvielen Dank für Ihre Anfrage bei GW-Park!\n\nWir haben Ihre Nachricht erhalten und werden uns schnellstmöglich bei Ihnen melden.\n\nMit freundlichen Grüßen\nDas GW-Park Team`
+                                auto_respond_message: `Sehr geehrte/r ${formData.contact},\n\nvielen Dank für Ihre Anfrage bei GW-Park!\n\nWir haben Ihre Nachricht erhalten und werden uns schnellstmöglich bei Ihnen melden.\n\nMit freundlichen Grüßen\nDas GW-Park Team`,
+                                replyto: formData.email
                             })
                         });
 
@@ -979,6 +980,28 @@
                         console.log('Form response:', result);
 
                         if (result.success) {
+                            // Send confirmation email separately if auto_respond didn't work
+                            try {
+                                await fetch('https://api.web3forms.com/submit', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'Accept': 'application/json'
+                                    },
+                                    body: JSON.stringify({
+                                        access_key: '4c1b4e57-e8c1-4753-8cbc-a546df572500',
+                                        subject: 'Ihre Anfrage bei GW-Park - Vielen Dank!',
+                                        from_name: 'GW-Park',
+                                        from_email: 'noreply@gw-park.de',
+                                        name: formData.contact,
+                                        message: `Sehr geehrte/r ${formData.contact},\n\nvielen Dank für Ihre Anfrage bei GW-Park!\n\nWir haben Ihre Nachricht erhalten und werden uns schnellstmöglich bei Ihnen melden.\n\nMit freundlichen Grüßen\nDas GW-Park Team`,
+                                        to_email: formData.email
+                                    })
+                                });
+                            } catch (emailError) {
+                                console.log('Confirmation email failed (non-critical):', emailError);
+                            }
+
                             formMessage.style.display = 'block';
                             formMessage.style.backgroundColor = '#dfffd0';
                             formMessage.style.color = '#1e2226';
