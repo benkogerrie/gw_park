@@ -56,12 +56,15 @@ Deze site is geconfigureerd voor deployment op Cloudflare Pages.
 6. Autoriseer Cloudflare om toegang te krijgen tot je GitHub account
 7. Selecteer de repository: `benkogerrie/gw_park`
 8. Configureer build settings:
-   - **Framework preset:** Vite
+   - **Framework preset:** Vite (of "None" als Vite niet beschikbaar is)
    - **Build command:** `npm run build`
    - **Build output directory:** `dist`
    - **Root directory:** `/` (laat leeg)
+   - **Deploy command:** (LAAT LEEG - dit veld moet leeg zijn!)
 9. Klik op **Save and Deploy**
 10. Wacht tot de build klaar is - je site is dan live!
+
+**BELANGRIJK:** Zorg ervoor dat het "Deploy command" veld leeg is. Cloudflare Pages deployt automatisch de `dist` folder - je hebt geen deploy command nodig!
 
 Je site krijgt automatisch een URL zoals: `https://gw-park.pages.dev`
 
