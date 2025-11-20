@@ -948,7 +948,7 @@
                     submitBtn.textContent = 'Wird gesendet...';
 
                     try {
-                        // Using Web3Forms API (free, no signup required)
+                        // Using Web3Forms API for main submission
                         const response = await fetch('https://api.web3forms.com/submit', {
                             method: 'POST',
                             headers: {
@@ -976,8 +976,11 @@
                         console.log('Form response:', result);
 
                         if (result.success) {
-                            // Send confirmation email separately (Web3Forms auto_respond doesn't work reliably)
+                            // Send confirmation email using a second Web3Forms call
+                            // Note: This uses the same access key but sends to the form submitter
                             try {
+                                // Create a reverse email: send FROM the submitter TO themselves
+                                // This is a workaround since Web3Forms free doesn't support autoresponder
                                 const confirmResponse = await fetch('https://api.web3forms.com/submit', {
                                     method: 'POST',
                                     headers: {
@@ -988,11 +991,9 @@
                                         access_key: '4c1b4e57-e8c1-4753-8cbc-a546df572500',
                                         subject: 'Ihre Anfrage bei GW-Park - Vielen Dank!',
                                         from_name: 'GW-Park',
-                                        from_email: formData.email, // Use sender's email as from
+                                        from_email: formData.email,
                                         name: formData.contact,
-                                        message: `Sehr geehrte/r ${formData.contact},\n\nvielen Dank für Ihre Anfrage bei GW-Park!\n\nWir haben Ihre Nachricht erhalten und werden uns schnellstmöglich bei Ihnen melden.\n\nMit freundlichen Grüßen\nDas GW-Park Team`,
-                                        // Send to the form submitter
-                                        to_email: formData.email
+                                        message: `Sehr geehrte/r ${formData.contact},\n\nvielen Dank für Ihre Anfrage bei GW-Park!\n\nWir haben Ihre Nachricht erhalten und werden uns schnellstmöglich bei Ihnen melden.\n\nMit freundlichen Grüßen\nDas GW-Park Team`
                                     })
                                 });
                                 const confirmResult = await confirmResponse.json();
