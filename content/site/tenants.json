@@ -1,0 +1,29 @@
+{
+  "tenants": [
+    {
+      "tag": "Logistik & Handwerk",
+      "title": "Lager & Logistik",
+      "description": "Perfekt für Online-Händler, Kurierdienste oder Importeure. Die Hallen bieten robuste Böden, ebenerdige Tore und perfekte Andienung für Sprinter.",
+      "image": "/pictures/Picture5.jpg"
+    },
+    {
+      "tag": "Hightech & Forschung",
+      "title": "Innovation & Labor",
+      "description": "Für 3D-Druck, Labore oder Medizintechnik. Die saubere, staubarme Bausubstanz eignet sich ideal für Unternehmen mit hohen technischen Ansprüchen.",
+      "image": "/pictures/Picture2.jpg"
+    },
+    {
+      "tag": "Manufaktur & Technik",
+      "title": "Produktion & Montage",
+      "description": "Optimal für Feinmechanik, Elektrotechnik oder kleine Fertigungsstraßen. Repräsentative Flächen kombiniert mit funktionaler Werkstatt.",
+      "image": ""
+    },
+    {
+      "tag": "Büro & Verwaltung",
+      "title": "Büro & Verwaltung",
+      "description": "Ideal für Bürodienstleister, Verwaltungsunternehmen oder Softwareentwickler. Moderne Arbeitsplätze mit High-Speed Internet und flexiblen Büroräumen.",
+      "image": "/pictures/Picture4.jpg"
+    }
+  ]
+}
+

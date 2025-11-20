@@ -834,6 +834,86 @@
                 nav.classList.remove('active');
             }
         }
+
+        // Load content from JSON files (for CMS)
+        async function loadContent() {
+            try {
+                // Load hero content
+                const heroResponse = await fetch('/content/site/hero.json');
+                if (heroResponse.ok) {
+                    const heroData = await heroResponse.json();
+                    const heroSubtitle = document.querySelector('.hero-subtitle');
+                    const heroTitle = document.querySelector('.hero h1');
+                    const heroDescription = document.querySelector('.hero p');
+                    const heroButton = document.querySelector('.hero .btn');
+                    
+                    if (heroSubtitle) heroSubtitle.textContent = heroData.subtitle;
+                    if (heroTitle) heroTitle.innerHTML = heroData.title.replace(/\n/g, '<br>');
+                    if (heroDescription) heroDescription.textContent = heroData.description;
+                    if (heroButton) heroButton.textContent = heroData.buttonText;
+                }
+
+                // Load konzept content
+                const konzeptResponse = await fetch('/content/site/konzept.json');
+                if (konzeptResponse.ok) {
+                    const konzeptData = await konzeptResponse.json();
+                    const konzeptTitle = document.querySelector('#konzept h2');
+                    const konzeptText = document.querySelector('#konzept p');
+                    
+                    if (konzeptTitle) konzeptTitle.textContent = konzeptData.title;
+                    if (konzeptText) konzeptText.textContent = konzeptData.text;
+                }
+
+                // Load tenants content
+                const tenantsResponse = await fetch('/content/site/tenants.json');
+                if (tenantsResponse.ok) {
+                    const tenantsData = await tenantsResponse.json();
+                    const tenantCards = document.querySelectorAll('.tenant-card');
+                    
+                    tenantsData.tenants.forEach((tenant, index) => {
+                        if (tenantCards[index]) {
+                            const card = tenantCards[index];
+                            const tag = card.querySelector('.tenant-tag');
+                            const title = card.querySelector('h3');
+                            const description = card.querySelector('p');
+                            const img = card.querySelector('img');
+                            
+                            if (tag) tag.textContent = tenant.tag;
+                            if (title) title.textContent = tenant.title;
+                            if (description) {
+                                // Replace strong tags in description
+                                description.innerHTML = tenant.description.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                            }
+                            if (img && tenant.image) img.src = tenant.image;
+                        }
+                    });
+                }
+
+                // Load contact content
+                const contactResponse = await fetch('/content/site/contact.json');
+                if (contactResponse.ok) {
+                    const contactData = await contactResponse.json();
+                    const contactTitle = document.querySelector('#kontakt h2');
+                    const contactDescription = document.querySelector('.contact-info p');
+                    const contactAddress = document.querySelector('.contact-info p:last-of-type');
+                    
+                    if (contactTitle) contactTitle.textContent = contactData.title;
+                    if (contactDescription) contactDescription.textContent = contactData.description;
+                    if (contactAddress) {
+                        contactAddress.innerHTML = `<strong>${contactData.companyName}</strong><br>${contactData.address.replace(/\n/g, '<br>')}`;
+                    }
+                }
+            } catch (error) {
+                console.log('Content loading failed, using default content:', error);
+            }
+        }
+
+        // Load content when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadContent);
+        } else {
+            loadContent();
+        }
     </script>
 </body>
 </html>

@@ -1,0 +1,50 @@
+backend:
+  name: github
+  repo: benkogerrie/gw_park
+  branch: main
+
+media_folder: "public/images" # Media files will be stored in the repo under public/images
+public_folder: "/images" # The src attribute for uploaded media will begin with /images
+
+collections:
+  - name: "site"
+    label: "Site Content"
+    files:
+      - label: "Hero Section"
+        name: "hero"
+        file: "content/site/hero.json"
+        fields:
+          - {label: "Subtitle", name: "subtitle", widget: "string"}
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Description", name: "description", widget: "text"}
+          - {label: "Button Text", name: "buttonText", widget: "string"}
+
+      - label: "Konzept Section"
+        name: "konzept"
+        file: "content/site/konzept.json"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Text", name: "text", widget: "text"}
+
+      - label: "Tenant Cards"
+        name: "tenants"
+        file: "content/site/tenants.json"
+        fields:
+          - label: "Tenants"
+            name: "tenants"
+            widget: "list"
+            fields:
+              - {label: "Tag", name: "tag", widget: "string"}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+              - {label: "Image", name: "image", widget: "image"}
+
+      - label: "Contact Section"
+        name: "contact"
+        file: "content/site/contact.json"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Description", name: "description", widget: "text"}
+          - {label: "Company Name", name: "companyName", widget: "string"}
+          - {label: "Address", name: "address", widget: "text"}
+          - {label: "Email", name: "email", widget: "string"}
