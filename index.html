@@ -796,8 +796,8 @@
                         <p style="opacity: 0.8; margin-top: 20px;">Sie vertreten eine Kommune oder besitzen eine gewerbliche Liegenschaft? Lassen Sie uns das Potenzial analysieren.</p>
                     </div>
                     <div>
-                        <p><strong>GW-Park GmbH</strong><br>Musterstraße 1<br>10115 Berlin</p>
-                        <p style="margin-top: 20px;"><a href="mailto:info@gw-park.de" style="text-decoration: underline;">info@gw-park.de</a></p>
+                        <p id="contact-address"><strong>GW-Park GmbH</strong><br>Musterstraße 1<br>10115 Berlin</p>
+                        <p style="margin-top: 20px;"><a id="contact-email" href="mailto:info@gw-park.de" style="text-decoration: underline;">info@gw-park.de</a></p>
                     </div>
                 </div>
                 <div class="contact-form-container">
@@ -911,9 +911,9 @@
                 if (contactResponse.ok && contactResponse.headers.get('content-type')?.includes('application/json')) {
                     const contactData = await contactResponse.json();
                     const contactTitle = document.querySelector('#kontakt h2');
-                    const contactDescription = document.querySelector('.contact-info > div > p');
-                    const contactAddress = document.querySelector('.contact-info > div:last-child > p:first-child');
-                    const contactEmail = document.querySelector('.contact-info > div:last-child > p:last-child a');
+                    const contactDescription = document.querySelector('.contact-info > div:first-child > p');
+                    const contactAddress = document.getElementById('contact-address');
+                    const contactEmail = document.getElementById('contact-email');
                     
                     if (contactTitle) contactTitle.textContent = contactData.title;
                     if (contactDescription) contactDescription.textContent = contactData.description;
