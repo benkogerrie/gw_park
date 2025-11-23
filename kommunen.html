@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warum Kommunen mit GW-Park zusammenarbeiten | GW-Park</title>
+    <meta name="description" content="Mehr Raum für Gewerbe. Mehr Potenzial für Ihre Stadt. GW-Park bietet Kommunen flexible Lösungen für nachhaltige Wirtschaftsförderung.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="alternate icon" href="/favicon.svg">
+
+    <!-- Google Fonts: Inter for a clean, architectural look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            /* Brand Colors */
+            --color-accent: #aef078; /* Lime Green - distinct technical/safety feel */
+            --color-accent-dim: #dfffd0;
+            --color-accent-hover: #96d663;
+            --color-dark: #1e2226; /* Dark Charcoal - industrial dark */
+            --color-dark-secondary: #2e3238;
+            --color-light: #ffffff;
+            --color-grey-bg: #f0f2f5; /* Cool grey */
+            --color-text: #333333;
+            --color-text-light: #666666;
+            
+            /* Layout */
+            --container-width: 1200px;
+            --header-height: 80px;
+            
+            /* Transitions */
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* FEATURE: Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-text);
+            line-height: 1.6;
+            background-color: var(--color-light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--color-dark);
+            line-height: 1.2;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* --- UTILITIES --- */
+        .container {
+            width: 90%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            background-color: var(--color-accent);
+            color: var(--color-dark);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 2px solid var(--color-accent);
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--color-accent);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+        }
+        
+        .btn-outline:hover {
+            background-color: #fff;
+            color: var(--color-dark);
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .bg-grey {
+            background-color: var(--color-grey-bg);
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .text-center { text-align: center; }
+        .mb-2 { margin-bottom: 2rem; }
+
+        /* --- FEATURE: Sticky Navigation --- */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.98);
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            backdrop-filter: blur(5px);
+            border-bottom: 4px solid var(--color-dark);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--color-dark);
+            letter-spacing: -0.05em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--color-accent-hover);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--color-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #5a8a35;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--color-accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .header-cta {
+            display: block;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--color-dark);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            height: 60vh;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            color: #fff;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-dark-secondary) 100%);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to right, rgba(30, 34, 38, 0.9), rgba(30, 34, 38, 0.6));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 900px;
+            z-index: 2;
+            padding-left: 40px;
+            border-left: 5px solid var(--color-accent);
+        }
+
+        .hero-subtitle {
+            display: inline-block;
+            color: var(--color-accent);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            line-height: 1.05;
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            opacity: 0.95;
+        }
+
+        /* --- ICON GRID --- */
+        .icon-grid-section {
+            background-color: var(--color-dark);
+            color: #fff;
+            padding: 80px 0;
+        }
+
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            text-align: left;
+        }
+
+        .icon-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .icon-item svg {
+            width: 50px;
+            height: 50px;
+            color: var(--color-accent);
+            flex-shrink: 0;
+            margin-top: 5px;
+        }
+
+        .icon-item-content h4 {
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        
+        .icon-item-content p {
+            color: #aaa;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* --- BENEFIT CARDS --- */
+        .benefit-card {
+            background-color: #fff;
+            border-left: 4px solid var(--color-accent);
+            padding: 30px;
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .benefit-card:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transform: translateY(-3px);
+        }
+
+        .benefit-card h4 {
+            color: var(--color-dark);
+            margin-bottom: 15px;
+        }
+
+        .benefit-card p {
+            color: var(--color-text);
+            margin-bottom: 0;
+        }
+
+        /* --- MODEL GRID --- */
+        .model-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .model-card {
+            background-color: var(--color-grey-bg);
+            padding: 30px;
+            border-bottom: 4px solid var(--color-accent);
+            text-align: center;
+        }
+
+        .model-card h4 {
+            color: var(--color-dark);
+            margin-bottom: 15px;
+        }
+
+        .model-card p {
+            color: var(--color-text);
+            font-size: 0.95rem;
+        }
+
+        /* --- TARGET AUDIENCE LIST --- */
+        .audience-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .audience-item {
+            background-color: var(--color-grey-bg);
+            padding: 20px;
+            text-align: center;
+            border-top: 3px solid var(--color-accent);
+            font-weight: 600;
+            color: var(--color-dark);
+        }
+
+        /* --- CTA SECTION --- */
+        .cta-section {
+            background-color: var(--color-dark);
+            color: #fff;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .cta-section .btn {
+            background-color: var(--color-accent);
+            color: var(--color-dark);
+            border-color: var(--color-accent);
+        }
+
+        .cta-section .btn:hover {
+            background-color: transparent;
+            color: var(--color-accent);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            color: #666;
+            padding: 60px 0;
+            text-align: center;
+            font-size: 0.85rem;
+            border-top: 1px solid #333;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero h2 { font-size: 1.4rem; }
+            
+            .header-cta { display: none; }
+
+            .nav-links {
+                position: absolute;
+                top: var(--header-height);
+                left: 0;
+                right: 0;
+                background-color: #fff;
+                flex-direction: column;
+                padding: 30px;
+                gap: 20px;
+                border-bottom: 4px solid var(--color-dark);
+                display: none;
+                text-align: center;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .hero { height: auto; min-height: 400px; }
+            .hero-content { padding-left: 20px; padding-right: 20px; }
+            
+            .icon-grid { grid-template-columns: 1fr; }
+            .icon-item { flex-direction: column; text-align: center; }
+            
+            .model-grid { grid-template-columns: 1fr; }
+            .audience-list { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Header -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">GW-PARK<span>.</span></a>
+            
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html#konzept" onclick="closeMenu()">Konzept</a>
+                <a href="index.html#einblick" onclick="closeMenu()">Einblicke</a>
+                <a href="index.html#nutzer" onclick="closeMenu()">Mieter</a>
+                <a href="index.html#prozess" onclick="closeMenu()">Ablauf</a>
+                <a href="kommunen.html" onclick="closeMenu()" class="active">Für Kommunen</a>
+                <a href="index.html#kontakt" onclick="closeMenu()">Kontakt</a>
+            </nav>
+
+            <div class="header-cta">
+                <a href="index.html#kontakt" class="btn">Standort anbieten</a>
+            </div>
+
+            <div class="mobile-toggle" onclick="toggleMenu()">☰</div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Warum Kommunen mit GW-Park zusammenarbeiten</h1>
+                <h2>Mehr Raum für Gewerbe. Mehr Potenzial für Ihre Stadt.</h2>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intro Text -->
+    <section class="section-padding">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto;">
+                <p style="font-size: 1.2rem; line-height: 1.8; color: var(--color-text);">
+                    Viele Kommunen stehen vor denselben Herausforderungen: Innenstädte benötigen neue Wohnflächen, gleichzeitig fehlen moderne Gewerberäume für KMU und Handwerk. Der GW-Park bietet eine Lösung, die beide Ziele verbindet.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="icon-grid-section">
+        <div class="container">
+            <h2 style="color: #fff; text-align: center; margin-bottom: 60px;">Ihre Vorteile als Kommune</h2>
+            <div class="icon-grid">
+                <div class="icon-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                    <div class="icon-item-content">
+                        <h4>Verlagerungsflächen für lokale Betriebe</h4>
+                        <p>Unternehmen ziehen aus dem Ortskern in moderne, leise und nachhaltige Einheiten. Dadurch entstehen innenstadtnah Flächen für Wohnen oder soziale Infrastruktur.</p>
+                    </div>
+                </div>
+
+                <div class="icon-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
+                    <div class="icon-item-content">
+                        <h4>Reaktivierung ungenutzter Gewerbeflächen</h4>
+                        <p>Brachflächen oder ältere Gewerbegebiete lassen sich schnell und hochwertig revitalisieren – ohne kommunale Investitionen.</p>
+                    </div>
+                </div>
+
+                <div class="icon-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <div class="icon-item-content">
+                        <h4>Stärkung von Mittelstand & Handwerk</h4>
+                        <p>Flexible Flächen ab 150 m² für Produktion, Logistik, Labor, Büro und Dienstleistungen. Perfekt für lokale Betriebe, die dringend Platz benötigen.</p>
+                    </div>
+                </div>
+
+                <div class="icon-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 21h18"></path>
+                        <path d="M5 21V7l8-4 8 4v14"></path>
+                        <path d="M13 10l4 4"></path>
+                        <path d="M17 10l-4 4"></path>
+                    </svg>
+                    <div class="icon-item-content">
+                        <h4>Nachhaltige Architektur mit hoher Akzeptanz</h4>
+                        <p>Holz-Hybridbauweise, begrünte Bereiche und moderne Fassaden sorgen für ein attraktives Erscheinungsbild im Stadtgebiet.</p>
+                    </div>
+                </div>
+
+                <div class="icon-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                    <div class="icon-item-content">
+                        <h4>Langfristige wirtschaftliche Effekte</h4>
+                        <p>Neue Arbeitsplätze, zusätzliche Gewerbesteuer und eine höhere Standortattraktivität.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flexible Models Section -->
+    <section class="section-padding bg-grey">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 20px;">Flexible Modelle für Kommunen</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; font-size: 1.1rem;">
+                Wir bieten verschiedene Kooperationsmodelle, die sich an die Bedürfnisse Ihrer Kommune anpassen.
+            </p>
+            <div class="model-grid">
+                <div class="model-card">
+                    <h4>Gemeinde bleibt Eigentümer</h4>
+                    <p>Erbpacht / Erbbaurecht</p>
+                </div>
+                <div class="model-card">
+                    <h4>Verkauf zu projektorientierten Konditionen</h4>
+                    <p>Entwicklung und Betrieb vollständig durch GW-Park</p>
+                </div>
+                <div class="model-card">
+                    <h4>Option: Eigentum bei der Gemeinde</h4>
+                    <p>Betrieb durch uns</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Audience Section -->
+    <section class="section-padding">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 20px;">Für wen ist diese Information?</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; font-size: 1.1rem; color: var(--color-text-light);">
+                Diese Seite richtet sich an alle kommunalen Entscheidungsträger und Fachbereiche, die mit Gewerbeflächenentwicklung zu tun haben.
+            </p>
+            <div class="audience-list">
+                <div class="audience-item">Wirtschaftsförderung</div>
+                <div class="audience-item">Stadtentwicklung</div>
+                <div class="audience-item">Liegenschaftsamt</div>
+                <div class="audience-item">Bürgermeisterbüro</div>
+                <div class="audience-item">Gewerbeflächenmanagement</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Nächster Schritt</h2>
+            <p>Sie haben eine Fläche oder ein Brachareal?</p>
+            <p style="font-size: 1rem; margin-bottom: 40px;">Wir analysieren kostenlos das Potenzial und erstellen eine erste Konzeptskizze.</p>
+            <a href="index.html#kontakt" class="btn">Kostenlose Potenzialanalyse anfragen</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 GW-Park. Alle Rechte vorbehalten. | <a href="#">Impressum</a> | <a href="#">Datenschutz</a></p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const nav = document.getElementById('navLinks');
+            if (nav.classList.contains('active')) {
+                nav.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
+
