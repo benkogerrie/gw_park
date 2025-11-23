@@ -911,13 +911,18 @@
                 if (contactResponse.ok && contactResponse.headers.get('content-type')?.includes('application/json')) {
                     const contactData = await contactResponse.json();
                     const contactTitle = document.querySelector('#kontakt h2');
-                    const contactDescription = document.querySelector('.contact-info p');
-                    const contactAddress = document.querySelector('.contact-info p:last-of-type');
+                    const contactDescription = document.querySelector('.contact-info > div > p');
+                    const contactAddress = document.querySelector('.contact-info > div:last-child > p:first-child');
+                    const contactEmail = document.querySelector('.contact-info > div:last-child > p:last-child a');
                     
                     if (contactTitle) contactTitle.textContent = contactData.title;
                     if (contactDescription) contactDescription.textContent = contactData.description;
                     if (contactAddress) {
                         contactAddress.innerHTML = `<strong>${contactData.companyName}</strong><br>${contactData.address.replace(/\n/g, '<br>')}`;
+                    }
+                    if (contactEmail) {
+                        contactEmail.textContent = contactData.email;
+                        contactEmail.href = `mailto:${contactData.email}`;
                     }
                 }
             } catch (error) {
